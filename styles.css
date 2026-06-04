@@ -215,7 +215,7 @@ code {
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------- Services ---------- */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 20px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; }
 .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s; transform-style: preserve-3d; }
 .service-card::before { content: ""; position: absolute; inset: 0; background: var(--grad-soft); opacity: 0; transition: opacity 0.3s; }
 .service-card:hover { border-color: var(--border-strong); }
@@ -270,7 +270,7 @@ code {
 .project-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 
 /* ---------- More builds ---------- */
-.builds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 18px; }
+.builds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
 .build-card { display: flex; flex-direction: column; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
 .build-card::before { content: ""; position: absolute; inset: 0; background: var(--grad-soft); opacity: 0; transition: opacity 0.3s; }
 .build-card:hover { transform: translateY(-4px); border-color: var(--border-strong); }
