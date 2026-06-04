@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zach — Websites & products that sell. Custom web design & development.</title>
+  <meta name="description" content="I design and build high-converting websites, web apps, and on-chain products. From premium business sites to a full RPG on Solana — strong on product, stronger on execution." />
+  <meta name="author" content="Zach" />
+
+  <meta property="og:title" content="Zach — Websites & Products That Sell" />
+  <meta property="og:description" content="Custom web design & development. High-converting business sites, web apps, and Web3 products." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <!-- intro preloader -->
+  <div class="preloader" id="preloader">
+    <div class="pre-inner">
+      <div class="pre-logo"><span class="pre-mark">⚡</span><span class="pre-name">Zach</span></div>
+      <div class="pre-bar"><span id="preBar"></span></div>
+      <div class="pre-foot"><span class="pre-tag">Web design &amp; development</span><span class="pre-count" id="preCount">0</span></div>
+    </div>
+  </div>
+
+  <!-- scroll progress -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <!-- cursor glow + custom cursor -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <!-- film grain -->
+  <div class="grain" aria-hidden="true"></div>
+  <!-- 3D scene layer -->
+  <div class="three-stage" id="threeStage" aria-hidden="true"></div>
+
+  <!-- animated background -->
+  <canvas class="bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
+  <div class="bg-blobs" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">⚡</span>
+        <span class="brand-name">Zach</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#results">Results</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Start a project</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="status-dot"></span> Available for new projects · Booking 2026</p>
+          <h1 class="hero-title reveal">
+            Websites &amp; products that<br />
+            don't just look good —<br />
+            <span class="grad-text">they make money.</span>
+          </h1>
+          <p class="hero-sub reveal">
+            I'm Zach — a full-stack designer &amp; developer. I build high-converting business sites,
+            web apps, games, and on-chain products, end to end. Custom-built, fast, and engineered to win you customers.
+          </p>
+          <div class="hero-actions reveal">
+            <a href="#contact" class="btn btn-primary btn-lg magnetic">Start a project <span class="btn-arrow">→</span></a>
+            <a href="#work" class="btn btn-ghost btn-lg">See the work</a>
+          </div>
+          <div class="hero-trust reveal">
+            <span class="hero-trust-label">Trusted to build for</span>
+            <div class="brand-row">
+              <span>Tanbark Build Co.</span><i>·</i><span>The Swamp</span><i>·</i><span>Sublime</span><i>·</i><span>Chez Luc's</span><i>·</i><span>TipaTech</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-showcase" id="heroShowcase" aria-hidden="true">
+          <div class="showcase-card sc-3 media-frame" data-depth="0.5">
+            <img class="shot" alt="" data-src="https://crystalflowh2o.com"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Fcrystalflowh2o.com?w=900&h=620" loading="lazy" />
+            <div class="media-fallback" data-initial="💧"></div>
+          </div>
+          <div class="showcase-card sc-2 media-frame" data-depth="0.9">
+            <img class="shot" alt="" data-src="https://the-swamp.fun"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Fthe-swamp.fun?w=900&h=620" loading="lazy" />
+            <div class="media-fallback" data-initial="🐊"></div>
+          </div>
+          <div class="showcase-card sc-main media-frame" data-depth="1.4">
+            <span class="sc-bar"><i></i><i></i><i></i></span>
+            <img class="shot" alt="Featured live site preview" data-src="https://tanbarkbuild.com"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Ftanbarkbuild.com?w=1000&h=680" loading="lazy" />
+            <div class="media-fallback" data-initial="🏗️"></div>
+          </div>
+          <span class="float-chip fc-1" data-depth="2.1">⭐ 4.8 on Yelp</span>
+          <span class="float-chip fc-2" data-depth="2.5">⛓️ Live on Solana</span>
+          <span class="float-chip fc-3" data-depth="1.8">⚡ Built to convert</span>
+        </div>
+      </div>
+      <a href="#services" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Custom Web Design</span><i>✦</i><span>High-Converting Landing Pages</span><i>✦</i>
+        <span>Local SEO &amp; Lead Gen</span><i>✦</i><span>Web Apps &amp; Dashboards</span><i>✦</i>
+        <span>E-commerce</span><i>✦</i><span>Solana &amp; Web3</span><i>✦</i><span>AI Tools</span><i>✦</i>
+        <span>Telegram Mini Apps</span><i>✦</i>
+        <span>Custom Web Design</span><i>✦</i><span>High-Converting Landing Pages</span><i>✦</i>
+        <span>Local SEO &amp; Lead Gen</span><i>✦</i><span>Web Apps &amp; Dashboards</span><i>✦</i>
+        <span>E-commerce</span><i>✦</i><span>Solana &amp; Web3</span><i>✦</i><span>AI Tools</span><i>✦</i>
+        <span>Telegram Mini Apps</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="section-head reveal">
+        <span class="section-kicker">What I do</span>
+        <h2 class="section-title">I design &amp; build the thing that grows your business.</h2>
+        <p class="section-lead">Not templates. Not a pretty page that just sits there. Custom-built sites and products engineered around one job: getting you customers.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card tilt reveal">
+          <div class="service-icon">🖥️</div>
+          <h3>Business Websites</h3>
+          <p>Fast, beautiful, custom-coded sites that build instant trust and turn visitors into booked calls and sales.</p>
+          <ul class="ticks"><li>Custom design, zero templates</li><li>Mobile-first &amp; lightning fast</li><li>Built to convert</li></ul>
+        </article>
+        <article class="service-card tilt reveal">
+          <div class="service-icon">🎯</div>
+          <h3>Lead-Gen &amp; Local SEO</h3>
+          <p>Capture and convert. Booking flows, lead routing, local schema, and Google/Yelp optimization that ranks and books.</p>
+          <ul class="ticks"><li>Online booking &amp; intake forms</li><li>Local SEO that ranks</li><li>Review &amp; reputation systems</li></ul>
+        </article>
+        <article class="service-card tilt reveal">
+          <div class="service-icon">⚙️</div>
+          <h3>Web Apps &amp; Dashboards</h3>
+          <p>When a site isn't enough — full-stack apps, customer portals, CRMs, and internal tools that actually get used.</p>
+          <ul class="ticks"><li>React + Node.js + PostgreSQL</li><li>Auth, payments, real-time</li><li>Clean, usable interfaces</li></ul>
+        </article>
+        <article class="service-card tilt reveal">
+          <div class="service-icon">🤖</div>
+          <h3>AI Tools &amp; Automation</h3>
+          <p>Smart features that wow customers and save you hours — AI design previews, chat, automated follow-ups, and more.</p>
+          <ul class="ticks"><li>Custom AI-powered features</li><li>Automated outreach &amp; sequences</li><li>Workflow automation</li></ul>
+        </article>
+        <article class="service-card tilt reveal">
+          <div class="service-icon">⛓️</div>
+          <h3>Web3 &amp; Solana</h3>
+          <p>On-chain products done right — SPL tokens, wallet integrations, DeFi mechanics, and Telegram mini-apps.</p>
+          <ul class="ticks"><li>SPL tokens &amp; on-chain state</li><li>Phantom wallet integration</li><li>Bonding curves &amp; DeFi</li></ul>
+        </article>
+        <article class="service-card tilt reveal">
+          <div class="service-icon">🛒</div>
+          <h3>E-commerce &amp; Sales</h3>
+          <p>Storefronts, quote builders, and product configurators with payments wired in and checkout built to close.</p>
+          <ul class="ticks"><li>Custom storefronts</li><li>Dynamic quotes &amp; pricing</li><li>Payments &amp; configurators</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Work / Projects -->
+    <section class="section" id="work">
+      <div class="section-head reveal">
+        <span class="section-kicker">Selected work</span>
+        <h2 class="section-title">Real sites. Real businesses. Real results.</h2>
+        <p class="section-lead">Every one built end-to-end — product, design, frontend, backend, and growth. Hover to explore, click to visit live.</p>
+      </div>
+
+      <div class="projects">
+        <!-- Tanbark Build Co. -->
+        <article class="project reveal">
+          <a class="project-media media-frame tilt" href="https://tanbarkbuild.com" target="_blank" rel="noopener" aria-label="Visit Tanbark Build Co.">
+            <img class="shot" alt="Tanbark Build Co. — live site preview"
+                 data-src="https://tanbarkbuild.com"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Ftanbarkbuild.com?w=1280&h=860" loading="lazy" />
+            <div class="project-media-fallback" data-initial="🏗️"></div>
+            <span class="project-index">01</span>
+            <span class="project-visit">Visit live site ↗</span>
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <h3 class="project-name">Tanbark Build Co.</h3>
+              <span class="tag tag-featured">Featured</span>
+            </div>
+            <p class="project-result"><b>1,200+</b> projects powered · <b>AI</b> design tool · <b>5-min</b> avg response</p>
+            <p class="project-tagline">Premium Sacramento remodeling brand — with a built-in AI design tool.</p>
+            <p class="project-desc">
+              A high-end contractor site that sells like a salesperson. Interactive project picker, before/after sliders,
+              day-by-day case studies, a downloadable planning kit, and a <strong>free AI design preview</strong> that
+              redesigns a customer's room from a single photo — all engineered to book free in-home estimates.
+            </p>
+            <ul class="project-highlights">
+              <li>AI room-redesign tool as a lead magnet</li>
+              <li>Before/after sliders &amp; day-by-day case studies</li>
+              <li>Conversion-first intake — "5 min avg response"</li>
+            </ul>
+            <ul class="chips">
+              <li>Web Design</li><li>AI Tool</li><li>Lead Gen</li><li>Local SEO</li><li>React</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-sm btn-primary" href="https://tanbarkbuild.com" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- The Swamp -->
+        <article class="project project-reverse reveal">
+          <a class="project-media media-frame tilt" href="https://the-swamp.fun" target="_blank" rel="noopener" aria-label="Visit The Swamp">
+            <img class="shot" alt="The Swamp — live site preview"
+                 data-src="https://the-swamp.fun"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Fthe-swamp.fun?w=1280&h=860" loading="lazy" />
+            <div class="project-media-fallback" data-initial="🐊"></div>
+            <span class="project-index">02</span>
+            <span class="project-visit">Visit live site ↗</span>
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <h3 class="project-name">The Swamp</h3>
+              <span class="tag">Web3 · Solana</span>
+            </div>
+            <p class="project-result"><b>147</b> on-chain assets · <b>$TSO</b> token · <b>SwampX</b> launchpad</p>
+            <p class="project-tagline">A play-to-earn RPG on Solana — with its own DeFi launchpad inside Telegram.</p>
+            <p class="project-desc">
+              While others shipped tap-to-earn clickers that crashed post-token, I built a real game: deep RPG systems,
+              147 unique crocs, PvP, and <strong>SwampX</strong> — a full Pump.fun-style launchpad built right into the app,
+              powered by the native <strong>$TSO</strong> token.
+            </p>
+            <ul class="project-highlights">
+              <li>On-chain game state &amp; SPL tokens on Solana</li>
+              <li>Custom bonding curve + Raydium graduation</li>
+              <li>Phantom wallet signing &amp; P&amp;L tracking</li>
+            </ul>
+            <ul class="chips">
+              <li>Solana</li><li>Telegram Mini App</li><li>React</li><li>Node.js</li><li>DeFi</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-sm btn-primary" href="https://the-swamp.fun" target="_blank" rel="noopener">Visit site ↗</a>
+              <a class="btn btn-sm btn-ghost" href="https://play.the-swamp.fun" target="_blank" rel="noopener">Play on Telegram</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sublime Appliance Repair -->
+        <article class="project reveal">
+          <a class="project-media media-frame tilt" href="https://sublimeappliancerepair.com" target="_blank" rel="noopener" aria-label="Visit Sublime Appliance Repair">
+            <img class="shot" alt="Sublime Appliance Repair — live site preview"
+                 data-src="https://sublimeappliancerepair.com"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Fsublimeappliancerepair.com?w=1280&h=860" loading="lazy" />
+            <div class="project-media-fallback" data-initial="🔧"></div>
+            <span class="project-index">03</span>
+            <span class="project-visit">Visit live site ↗</span>
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <h3 class="project-name">Sublime Appliance Repair</h3>
+              <span class="tag">Local business</span>
+            </div>
+            <p class="project-result"><b>4.8★</b> on Yelp · <b>128+</b> reviews · same-day bookings</p>
+            <p class="project-tagline">A Sacramento repair business's entire digital presence — and lead engine.</p>
+            <p class="project-desc">
+              SEO-optimized service pages, same-day online booking, lead capture &amp; routing, and Google/Yelp
+              optimization. The site drives real, converting bookings every single day.
+            </p>
+            <ul class="project-highlights">
+              <li>4.8/5 on Yelp across 128+ verified reviews</li>
+              <li>Ranks for competitive local repair keywords</li>
+              <li>Mobile-first conversion design</li>
+            </ul>
+            <ul class="chips">
+              <li>React</li><li>Tailwind CSS</li><li>Node.js</li><li>Local SEO</li><li>Booking</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-sm btn-primary" href="https://sublimeappliancerepair.com" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CrystalFlowH2O -->
+        <article class="project project-reverse reveal">
+          <a class="project-media media-frame tilt" href="https://crystalflowh2o.com" target="_blank" rel="noopener" aria-label="Visit CrystalFlowH2O">
+            <img class="shot" alt="CrystalFlowH2O — live site preview"
+                 data-src="https://crystalflowh2o.com"
+                 src="https://s.wp.com/mshots/v1/https%3A%2F%2Fcrystalflowh2o.com?w=1280&h=860" loading="lazy" />
+            <div class="project-media-fallback" data-initial="💧"></div>
+            <span class="project-index">04</span>
+            <span class="project-visit">Visit live site ↗</span>
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <h3 class="project-name">CrystalFlowH2O</h3>
+              <span class="tag">B2B SaaS</span>
+            </div>
+            <p class="project-result"><b>B2B</b> lead engine · automated outreach · dealer portal</p>
+            <p class="project-tagline">A B2B water filtration sales &amp; lead-generation platform.</p>
+            <p class="project-desc">
+              A sales engine for a recurring-revenue business: targeted commercial outreach, automated follow-up
+              sequences, a dynamic quote builder with product configuration, and a dealer/distributor portal.
+            </p>
+            <ul class="project-highlights">
+              <li>High-intent B2B lead capture &amp; CRM tracking</li>
+              <li>Consultative flow: specs → quote → close</li>
+              <li>Partner portal for dealers &amp; distributors</li>
+            </ul>
+            <ul class="chips">
+              <li>React</li><li>Node.js</li><li>REST API</li><li>Automation</li><li>SEO</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn btn-sm btn-primary" href="https://crystalflowh2o.com" target="_blank" rel="noopener">Visit site ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- More builds -->
+    <section class="section" id="more">
+      <div class="section-head reveal">
+        <span class="section-kicker">More builds</span>
+        <h2 class="section-title">A few more from the lab.</h2>
+        <p class="section-lead">Private client &amp; product builds across restaurants, retail brands, games, and Solana infrastructure. Source is private — here's the shape of the work.</p>
+      </div>
+
+      <div class="builds-grid">
+        <article class="build-card reveal">
+          <div class="build-icon">📈</div>
+          <div class="build-body">
+            <h3>PolyBOT</h3>
+            <p>A fully automated arbitrage bot for Polymarket prediction markets — scans every market for pricing inefficiencies, locks in both sides, and manages risk, with an AI decision layer.</p>
+          </div>
+          <ul class="chips"><li>Python</li><li>Algorithmic trading</li><li>AI</li><li>Risk engine</li></ul>
+        </article>
+
+        <article class="build-card reveal">
+          <div class="build-icon">🐳</div>
+          <div class="build-body">
+            <h3>Whally's World</h3>
+            <p>A whale-themed overworld game built in <strong>Phaser</strong> — a Telegram mini-app with a FastAPI + MongoDB backend, custom Tiled maps, sprite pipeline, and Solana client code.</p>
+          </div>
+          <ul class="chips"><li>Phaser</li><li>React</li><li>FastAPI</li><li>MongoDB</li><li>Solana</li></ul>
+        </article>
+
+        <article class="build-card reveal">
+          <div class="build-icon">🏠</div>
+          <div class="build-body">
+            <h3>Rental Manager <span class="build-sub">("App for my Dad")</span></h3>
+            <p>A full rental-property management system — tenants, payments, and interest calculations with Excel import. Built in Hebrew with full right-to-left (RTL) support.</p>
+          </div>
+          <ul class="chips"><li>FastAPI</li><li>React</li><li>TypeScript</li><li>RTL / i18n</li></ul>
+        </article>
+
+        <article class="build-card reveal">
+          <div class="build-icon">🥐</div>
+          <div class="build-body">
+            <h3>Chez Luc's French Café</h3>
+            <p>A warm, appetite-first site for a Sacramento French café — menu, story, and visit details, built with React + Vite to bring locals through the door.</p>
+          </div>
+          <ul class="chips"><li>React</li><li>Vite</li><li>Local business</li></ul>
+        </article>
+
+        <article class="build-card reveal">
+          <div class="build-icon">💧</div>
+          <div class="build-body">
+            <h3>TipaTech Elite</h3>
+            <p>A polished brand site for a premium water-filtration company — modern React + Tailwind front end with a refined component system.</p>
+          </div>
+          <ul class="chips"><li>React</li><li>TypeScript</li><li>Tailwind</li><li>shadcn/ui</li></ul>
+        </article>
+
+        <article class="build-card reveal">
+          <div class="build-icon">🌱</div>
+          <div class="build-body">
+            <h3>NetTaim</h3>
+            <p>A Hebrew (RTL) business management &amp; quoting platform — a custom pricing engine, client and job tracking, and reporting on a Node.js + MongoDB stack.</p>
+          </div>
+          <ul class="chips"><li>Node.js</li><li>MongoDB</li><li>RTL / i18n</li><li>Pricing engine</li></ul>
+        </article>
+
+        <article class="build-card reveal">
+          <div class="build-icon">⚡</div>
+          <div class="build-body">
+            <h3>Swamp Automation Suite</h3>
+            <p>The infrastructure behind The Swamp: real-time <strong>Helius</strong> Solana transaction webhooks, Twitter/Reddit OAuth servers, and a fleet of Telegram bots.</p>
+          </div>
+          <ul class="chips"><li>Python</li><li>Solana</li><li>Helius</li><li>OAuth</li><li>Telegram</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section results" id="results">
+      <div class="section-head reveal center">
+        <span class="section-kicker">By the numbers</span>
+        <h2 class="section-title">Work that performs.</h2>
+      </div>
+      <div class="counters">
+        <div class="counter reveal"><span class="counter-num" data-target="14" data-suffix="+">0</span><span class="counter-label">Products shipped</span></div>
+        <div class="counter reveal"><span class="counter-num" data-target="4" data-suffix="">0</span><span class="counter-label">Live public websites</span></div>
+        <div class="counter reveal"><span class="counter-num" data-target="1200" data-suffix="+">0</span><span class="counter-label">Projects powered (Tanbark)</span></div>
+        <div class="counter reveal"><span class="counter-num" data-target="128" data-suffix="+">0</span><span class="counter-label">5-star reviews driven</span></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="section-head reveal">
+        <span class="section-kicker">How we'll work</span>
+        <h2 class="section-title">From idea to launched — without the headaches.</h2>
+        <p class="section-lead">A clear, no-surprises process. You always know what's happening and what's next.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="step-num">01</span><h3>Discovery</h3><p>We talk goals, audience, and what success looks like. I learn your business so the site actually fits it.</p></div>
+        <div class="step reveal"><span class="step-num">02</span><h3>Design</h3><p>A custom design built around conversion — not a template. You see it, shape it, and approve it.</p></div>
+        <div class="step reveal"><span class="step-num">03</span><h3>Build</h3><p>Fast, clean, custom code. Mobile-first, SEO-ready, and wired up with the features your business needs.</p></div>
+        <div class="step reveal"><span class="step-num">04</span><h3>Launch &amp; Grow</h3><p>We ship it live, track what works, and keep improving. I don't disappear after launch.</p></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <span class="section-kicker">About</span>
+          <h2 class="section-title">Hey, I'm Zach.</h2>
+          <p>I build products end-to-end — and I'm obsessed with making things that actually <em>work</em> for the people who own them.</p>
+          <p>I've shipped a full on-chain game with a DeFi launchpad inside Telegram, premium business websites that book real jobs, a Phaser game, an automated arbitrage trading bot, and RTL business apps. Strong on product thinking, stronger on execution.</p>
+          <p>When something I use is broken, I fix it and open-source it:</p>
+          <ul class="os-list">
+            <li><a href="https://github.com/archestra-ai/archestra/pull/4400" target="_blank" rel="noopener"><strong>archestra-ai / archestra</strong> #4400 — persist chat messages on client disconnect during streaming <span>↗</span></a></li>
+            <li><a href="https://github.com/tscircuit/jlcsearch/pull/186" target="_blank" rel="noopener"><strong>tscircuit / jlcsearch</strong> #186 — add <code>is_extended_promotional</code> filterable column <span>↗</span></a></li>
+          </ul>
+        </div>
+        <div class="about-card reveal">
+          <h3>My toolkit</h3>
+          <div class="skill-bars">
+            <div class="skill-bar"><span class="sb-label">Frontend · React / TypeScript / Vite</span><span class="sb-track"><span class="sb-fill" data-pct="95"></span></span></div>
+            <div class="skill-bar"><span class="sb-label">Backend · Node.js / FastAPI / SQL / Mongo</span><span class="sb-track"><span class="sb-fill" data-pct="90"></span></span></div>
+            <div class="skill-bar"><span class="sb-label">UI / UX &amp; Conversion Design</span><span class="sb-track"><span class="sb-fill" data-pct="92"></span></span></div>
+            <div class="skill-bar"><span class="sb-label">Web3 · Solana / DeFi</span><span class="sb-track"><span class="sb-fill" data-pct="88"></span></span></div>
+            <div class="skill-bar"><span class="sb-label">Games · Phaser &amp; real-time systems</span><span class="sb-track"><span class="sb-fill" data-pct="84"></span></span></div>
+            <div class="skill-bar"><span class="sb-label">Automation, Bots &amp; AI</span><span class="sb-track"><span class="sb-fill" data-pct="87"></span></span></div>
+          </div>
+          <ul class="chips chips-lg">
+            <li>TypeScript</li><li>React</li><li>Node.js</li><li>Python</li><li>FastAPI</li><li>PostgreSQL</li>
+            <li>MongoDB</li><li>Solana</li><li>Phaser</li><li>Tailwind</li><li>Telegram Mini Apps</li>
+            <li>Docker</li><li>RTL / i18n</li><li>AI integrations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section class="section contact" id="contact">
+      <div class="contact-card glow-border reveal">
+        <span class="section-kicker">Let's talk</span>
+        <h2 class="section-title">Let's build something people remember.</h2>
+        <p class="section-lead">Got a business that needs a site that sells, an app to build, or something on-chain to ship? Tell me about it — first reply is usually within hours.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary btn-lg magnetic" href="mailto:CrocCartelTeam@gmail.com?subject=Project%20inquiry">Start a project <span class="btn-arrow">→</span></a>
+          <a class="btn btn-ghost btn-lg" href="https://x.com/smolambillion" target="_blank" rel="noopener">DM me on X</a>
+        </div>
+        <p class="contact-alt">Prefer email? <a href="mailto:CrocCartelTeam@gmail.com">CrocCartelTeam@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="#top" class="brand"><span class="brand-mark">⚡</span><span class="brand-name">Zach</span></a>
+      <p class="footer-tag">Websites &amp; products that sell. Building on Solana &amp; the web.</p>
+      <p class="footer-links">
+        <a href="https://tanbarkbuild.com" target="_blank" rel="noopener">Tanbark</a>
+        <a href="https://the-swamp.fun" target="_blank" rel="noopener">The Swamp</a>
+        <a href="https://x.com/smolambillion" target="_blank" rel="noopener">X</a>
+        <a href="https://github.com/CrocCartelDevTeam" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> Zach. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script type="module" src="hero3d.js"></script>
+</body>
+</html>
