@@ -17,10 +17,8 @@ async function init() {
   const THREE = await import("https://unpkg.com/three@0.160.0/build/three.module.js");
 
   const scene = new THREE.Scene();
-  // Narrow FOV (closer to orthographic) so the off-center crystal doesn't get
-  // perspective-stretched near the frame edge — keeps it visually symmetric.
-  const camera = new THREE.PerspectiveCamera(34, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.z = 13.5;
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 9;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "low-power" });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
@@ -43,17 +41,18 @@ async function init() {
   );
   group.add(glass);
 
-  // Clean, regular icosahedron cage (detail 0) — 30 identical edges, so the
-  // wireframe is perfectly symmetric from every angle (no geodesic noise).
+  // Geodesic wireframe cage. WireframeGeometry draws EVERY triangle edge of the
+  // subdivided icosahedron (not the patchy, threshold-filtered EdgesGeometry), so
+  // the mesh is uniform and symmetric from every angle while staying rich.
   const shell = new THREE.LineSegments(
-    new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(2.55, 0)),
-    new THREE.LineBasicMaterial({ color: COLORS.teal, transparent: true, opacity: 0.6 })
+    new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.55, 1)),
+    new THREE.LineBasicMaterial({ color: COLORS.teal, transparent: true, opacity: 0.42 })
   );
   group.add(shell);
 
   const shell2 = new THREE.LineSegments(
-    new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(3.05, 0)),
-    new THREE.LineBasicMaterial({ color: COLORS.violet, transparent: true, opacity: 0.25 })
+    new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(3.05, 1)),
+    new THREE.LineBasicMaterial({ color: COLORS.violet, transparent: true, opacity: 0.16 })
   );
   group.add(shell2);
 
