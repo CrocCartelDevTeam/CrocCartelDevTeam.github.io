@@ -388,13 +388,19 @@ function initParticles(canvas) {
   draw();
 }
 
-// ---------- Live screenshot previews (WordPress mShots) ----------
-// mShots captures asynchronously; first requests return a fixed-size "generating…"
-// placeholder. We poll until the dimensions change (real screenshot ready).
+// ---------- Site previews ----------
+// Previews are real, locally-captured screenshots committed in /assets/shots.
+// If an image ever fails to load, reveal the branded emoji fallback tile.
+// (Legacy mShots polling kept below for any element that still uses data-src.)
 document.querySelectorAll(".media-frame").forEach((media) => {
   const img = media.querySelector(".shot");
   if (!img) return;
   const target = img.getAttribute("data-src");
+  if (!target) {
+    if (img.complete && img.naturalWidth === 0) media.classList.add("failed");
+    img.addEventListener("error", () => media.classList.add("failed"), { once: true });
+    return;
+  }
   const base = "https://s.wp.com/mshots/v1/" + encodeURIComponent(target) + "?w=1280&h=860";
   let placeholderSig = null, polls = 0;
   const maxPolls = 10, intervalMs = 3000;
