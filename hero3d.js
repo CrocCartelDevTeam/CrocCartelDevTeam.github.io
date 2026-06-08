@@ -6,22 +6,23 @@
 // ============================================================
 
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const isSmall = window.matchMedia("(max-width: 900px)").matches;
+const isMobile = window.matchMedia("(max-width: 700px)").matches;
 const stage = document.getElementById("threeStage");
 
-if (stage && !prefersReduced && !isSmall) {
-  init().catch(() => { /* silent fallback */ });
+// Runs on mobile too now — just with a lighter config (see `mobile` tuning below).
+if (stage && !prefersReduced) {
+  init(isMobile).catch(() => { /* silent fallback */ });
 }
 
-async function init() {
+async function init(mobile) {
   const THREE = await import("https://unpkg.com/three@0.160.0/build/three.module.js");
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
   camera.position.z = 9;
 
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "low-power" });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !mobile, powerPreference: "low-power" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.25 : 1.6));
   renderer.setSize(window.innerWidth, window.innerHeight);
   stage.appendChild(renderer.domElement);
 
@@ -58,7 +59,7 @@ async function init() {
 
   // ---- Glowing atoms bouncing inside the sphere ----
   const ATOM_R = 1.95; // containment radius (sits just inside the glass body)
-  const ATOM_COUNT = 30;
+  const ATOM_COUNT = mobile ? 18 : 30;
   const atomPalette = [0x6fe9d0, 0x22d3ee, 0xa855f7, 0x6366f1, 0x2dd4a7];
   const atomGeo = new THREE.SphereGeometry(1, 14, 14);
   const atoms = [];
@@ -98,7 +99,7 @@ async function init() {
   const l3 = new THREE.PointLight(COLORS.indigo, 80, 60); l3.position.set(0, 6, -6); scene.add(l3);
 
   // ---- Depth particle field ----
-  const COUNT = 520;
+  const COUNT = mobile ? 240 : 520;
   const pGeo = new THREE.BufferGeometry();
   const pPos = new Float32Array(COUNT * 3);
   for (let i = 0; i < COUNT; i++) {
@@ -116,11 +117,15 @@ async function init() {
   );
   scene.add(particles);
 
-  // position the whole cluster to the right so it sits behind the hero showcase
+  // Position the cluster: offset right on desktop (beside the hero text), centered
+  // and slightly smaller on phones so it reads as a clean accent behind the copy.
+  let baseScale = 1;
   const reposition = () => {
-    const wide = window.innerWidth > 1024;
+    const w = window.innerWidth;
+    const wide = w > 1024;
     group.position.x = wide ? 3.4 : 0;
     particles.position.x = wide ? 1.5 : 0;
+    baseScale = w <= 700 ? 0.8 : 1;
   };
   reposition();
 
@@ -162,7 +167,7 @@ async function init() {
     group.rotation.z = Math.sin(t * 0.18) * 0.05;
 
     // gentle uniform pulse keeps it perfectly symmetric (no warping)
-    group.scale.setScalar(1 + Math.sin(t * 0.8) * 0.02);
+    group.scale.setScalar(baseScale * (1 + Math.sin(t * 0.8) * 0.02));
 
     // move atoms and bounce them off the inner sphere wall
     for (let i = 0; i < atoms.length; i++) {
@@ -201,7 +206,8 @@ async function init() {
     // gentle scroll drift + fade with hero exit
     const fade = Math.max(0, 1 - scrollY / (window.innerHeight * 0.9));
     group.position.y = -scrollY * 0.004;
-    stage.style.opacity = String(0.25 + 0.75 * fade);
+    // On phones keep it dimmer and let it fade out fully past the hero so text stays crisp.
+    stage.style.opacity = String(mobile ? 0.55 * fade : 0.25 + 0.75 * fade);
 
     renderer.render(scene, camera);
     requestAnimationFrame(loop);
