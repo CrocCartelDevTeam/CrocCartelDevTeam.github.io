@@ -154,7 +154,7 @@ async function init() {
     tx += (mouse.x - tx) * 0.04;
     ty += (mouse.y - ty) * 0.04;
 
-    // Whole crystal rotates as one rigid body — core + both shells stay aligned.
+    // Whole crystal rotates as one rigid body — glass, shells & atoms stay aligned.
     group.rotation.y = t * 0.12 + tx * 0.5;
     group.rotation.x = ty * 0.4 + Math.sin(t * 0.3) * 0.08;
     group.rotation.z = Math.sin(t * 0.18) * 0.05;
